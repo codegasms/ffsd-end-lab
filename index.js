@@ -6,8 +6,15 @@ import surveyRoutes from "./routes/survey.js";
 
 import { config } from "./config.js";
 import cookieParser from "cookie-parser";
+import cors from "cors";
 
 const app = express();
+
+// app.use(cors({origin: [...list of allowed origins]}))
+// if cors is required
+// dont fking use liveserver
+// express is already serving all files under public
+
 app.use(cookieParser());
 
 app.set("views", "views");

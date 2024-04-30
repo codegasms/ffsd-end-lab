@@ -11,8 +11,11 @@ function extractTokenFromHeader(req) {
 }
 
 function extractTokenFromCookie(req) {
-  if (!req.cookie) return null;
-  const cookieToken = req.cookie.accesToken;
+  console.log("cookie", req.cookies);
+
+  if (!req.cookies) return null;
+  const cookieToken = req.cookies.accessToken;
+  console.log("cookie token", cookieToken);
   if (cookieToken) return cookieToken;
   return null;
 }

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Survey Form</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+
+<body>
+
+  <div class="w-full max-w-lg p-12 m-12">
+    <form id="surveyForm" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" action="/survey/create" method="POST">
+      <div class="mb-4">
+        <label for="name" class="block text-gray-700 text-sm font-bold mb-2">Name:</label>
+        <input type="text" id="name" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="name" required>
+      </div>
+      <div class="mb-4">
+        <label for="gender" class="block text-gray-700 text-sm font-bold mb-2">Gender:</label>
+        <select id="gender" class="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline " name="gender">
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Transgender">Transgender</option>
+        </select>
+      </div>
+      <div class="mb-4">
+        <label for="age" class="block text-gray-700 text-sm font-bold mb-2">Age:</label>
+        <input name="age" type="number" id="age" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+      </div>
+      <div class="mb-4">
+        <label for="education" class="block text-gray-700 text-sm font-bold mb-2">Education:</label>
+        <input name="education" type="text" id="education" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+      </div>
+      <div class="mb-4">
+        <label for="yearsOfCoding" class="block text-gray-700 text-sm font-bold mb-2">Years of Coding:</label>
+        <input name="yearsOfCoding" type="number" id="yearsOfCoding" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+      </div>
+      <div class="mb-4">
+        <label for="industry" class="block text-gray-700 text-sm font-bold mb-2">Industry:</label>
+        <input name="industry" type="text" id="industry" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+      </div>
+      <div class="mb-4">
+        <label for="openSource" class="block text-gray-700 text-sm font-bold mb-2">Open Source Contributor:</label>
+        <input name="openSource" type="checkbox" id="openSource" class="leading-tight">
+      </div>
+      <div class="mb-4">
+        <label for="versionControl" class="block text-gray-700 text-sm font-bold mb-2">Version Control System:</label>
+        <input name="versionControl" type="text" id="versionControl" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+      </div>
+      <div class="mb-4">
+        <label for="tools" class="block text-gray-700 text-sm font-bold mb-2">Development Tools:</label>
+        <input name="tools" type="text" id="tools" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+      </div>
+      <div class="mb-4">
+        <label for="hoursOfStudy" class="block text-gray-700 text-sm font-bold mb-2">Hours of Study per Week:</label>
+        <input name="hoursOfStudy" type="text" id="hoursOfStudy" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+      </div>
+      <div class="flex items-center justify-between">
+        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+          Submit
+        </button>
+      </div>
+    </form>
+  </div>
+
+
+</body>
+
+</html>
