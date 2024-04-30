@@ -1,4 +1,4 @@
-GET  http://localhost:3000/auth/perms
+GET  http://localhost:3000/auth/register
 Content-Type: application/json
 
 {

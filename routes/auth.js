@@ -22,7 +22,12 @@ router.post("/register", async (req, res) => {
     return res.status(400).json({ message: "Username already taken" });
   } else {
     await user.save();
-    res.status(200).json({ message: "User created successfully" });
+    const accessToken = generateAccessToken(user);
+    res.cookie("accessToken", accessToken);
+    return res.status(200).json({
+      accessToken: accessToken,
+      message: "User  registered successfully",
+    });
   }
 });
 
@@ -50,7 +55,7 @@ router.post("/login", async (req, res) => {
   const ispassvalid = await bcrypt.compare(password, user.password);
   if (ispassvalid) {
     const accessToken = generateAccessToken(user);
-
+    res.cookie("accessToken", accessToken);
     return res.status(200).json({
       accessToken: accessToken,
       message: "User logged in successfully",

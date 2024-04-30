@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Survey Form</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.0.24/dist/tailwind.min.css" rel="stylesheet">
+  <script defer src="formScript.js"></script>
+</head>
+
+<body class="bg-gray-100 flex items-center justify-center h-screen">
+  <div class="w-full max-w-lg">
+    <form id="surveyForm" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+      <div class="mb-4">
+        <label for="name" class="block text-gray-700 text-sm font-bold mb-2">Name:</label>
+        <input type="text" id="name" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+      </div>
+      <div class="mb-4">
+        <label for="gender" class="block text-gray-700 text-sm font-bold mb-2">Gender:</label>
+        <select id="gender" class="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Transgender">Transgender</option>
+        </select>
+      </div>
+      <div class="mb-4">
+        <label for="age" class="block text-gray-700 text-sm font-bold mb-2">Age:</label>
+        <input type="number" id="age" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+      </div>
+      <div class="mb-4">
+        <label for="education" class="block text-gray-700 text-sm font-bold mb-2">Education:</label>
+        <input type="text" id="education" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+      </div>
+      <div class="mb-4">
+        <label for="yearsOfCoding" class="block text-gray-700 text-sm font-bold mb-2">Years of Coding:</label>
+        <input type="number" id="yearsOfCoding" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+      </div>
+      <div class="mb-4">
+        <label for="industry" class="block text-gray-700 text-sm font-bold mb-2">Industry:</label>
+        <input type="text" id="industry" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+      </div>
+      <div class="mb-4">
+        <label for="openSource" class="block text-gray-700 text-sm font-bold mb-2">Open Source Contributor:</label>
+        <input type="checkbox" id="openSource" class="leading-tight">
+      </div>
+      <div class="mb-4">
+        <label for="versionControl" class="block text-gray-700 text-sm font-bold mb-2">Version Control System:</label>
+        <input type="text" id="versionControl" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+      </div>
+      <div class="mb-4">
+        <label for="tools" class="block text-gray-700 text-sm font-bold mb-2">Development Tools:</label>
+        <input type="text" id="tools" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+      </div>
+      <div class="mb-4">
+        <label for="hoursOfStudy" class="block text-gray-700 text-sm font-bold mb-2">Hours of Study per Week:</label>
+        <input type="text" id="hoursOfStudy" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+      </div>
+      <div class="flex items-center justify-between">
+        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+          Submit
+        </button>
+      </div>
+    </form>
+  </div>
+</body>
+
+</html>
+<script>
+  document.getElementById("surveyForm").addEventListener("submit", async function(event) {
+    event.preventDefault();
+
+    const formData = {
+      name: document.getElementById("name").value,
+      gender: document.getElementById("gender").value,
+      age: parseInt(document.getElementById("age").value),
+      education: document.getElementById("education").value,
+      yearsOfCoding: parseInt(document.getElementById("yearsOfCoding").value),
+      industry: document.getElementById("industry").value,
+      openSource: document.getElementById("openSource").checked,
+      versionControl: document.getElementById("versionControl").value,
+      tools: document.getElementById("tools").value,
+      hoursOfStudy: document.getElementById("hoursOfStudy").value
+    };
+
+    const token = localStorage.getItem("token");
+
+    try {
+      const response = await fetch("YOUR_API_ENDPOINT", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`
+        },
+        body: JSON.stringify(formData)
+      });
+
+      const responseData = await response.json();
+      console.log(responseData);
+      alert("Form submitted successfully!");
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      alert("Failed to submit the form.");
+    }
+  });
+</script>

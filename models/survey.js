@@ -1,6 +1,6 @@
 import { Schema, model } from "mongoose";
 
-export const genders = ["Male", "Female", "Transgender"];
+export const sex = ["Male", "Female", "Transgender"];
 
 export const surveySchema = new Schema({
   timestamp: {
@@ -11,7 +11,7 @@ export const surveySchema = new Schema({
   name: String,
   gender: {
     type: String,
-    enum: genders,
+    enum: sex,
   },
   age: Number,
   education: String,

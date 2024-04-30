@@ -5,8 +5,10 @@ import authRoutes from "./routes/auth.js";
 import surveyRoutes from "./routes/survey.js";
 
 import { config } from "./config.js";
+import cookieParser from "cookie-parser";
 
 const app = express();
+app.use(cookieParser());
 
 app.set("views", "views");
 
