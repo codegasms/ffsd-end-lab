@@ -17,7 +17,7 @@ router.post("/create", async (req, res) => {
     education: req.body.education,
     yearsOfCoding: req.body.yearsOfCoding,
     industry: req.body.industry,
-    openSource: req.body.openSource,
+    openSource: req.body.openSource === "on",
     versionControl: req.body.versionControl,
     tools: req.body.tools,
     hoursOfStudy: req.body.hoursOfStudy,
