@@ -1,0 +1,7 @@
+GET  http://localhost:3000/auth/perms
+Content-Type: application/json
+
+{
+    "username": "Random3",
+    "password": "123"
+}

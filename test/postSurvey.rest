@@ -1,0 +1,16 @@
+POST http://localhost:3000/survey/create
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlJhbmRvbTIiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MTQ0MzYzOTM2NzUsInNpZ25lZEJ5IjoiQ29kZWdhc21zIiwiZXhwIjoxNzE0NDM2NDgwMDc1fQ.Z6lTbxCM9GDcysflkDRkBCyWNGCRgyqRUV2HoniiYQ0
+
+{
+    "name": "John Doe",
+    "gender": "Male",
+    "age": 30,
+    "education": "Bachelor's Degree",
+    "yearsOfCoding": "5",
+    "industry": "Software Development",
+    "openSource": true,
+    "versionControl": "Git",
+    "tools": "VS Code, Postman",
+    "hoursOfStudy": "20"
+}
