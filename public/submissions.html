@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survey Data</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+
+<body class="bg-gray-100">
+    <div class="container mx-auto py-8">
+        <h1 class="text-2xl font-bold mb-4">Survey Data</h1>
+        <table class="min-w-full bg-white rounded-lg overflow-hidden">
+            <thead class="bg-gray-100 text-gray-600 uppercase text-sm leading-normal">
+                <tr>
+                    <th class="py-3 px-6 text-left">Timestamp</th>
+                    <th class="py-3 px-6 text-left">Name</th>
+                    <th class="py-3 px-6 text-left">Gender</th>
+                    <th class="py-3 px-6 text-left">Age</th>
+                    <th class="py-3 px-6 text-left">Education</th>
+                    <th class="py-3 px-6 text-left">Years of Coding</th>
+                    <th class="py-3 px-6 text-left">Industry</th>
+                    <th class="py-3 px-6 text-left">Open Source</th>
+                    <th class="py-3 px-6 text-left">Version Control</th>
+                    <th class="py-3 px-6 text-left">Tools</th>
+                    <th class="py-3 px-6 text-left">Hours of Study</th>
+                </tr>
+            </thead>
+            <tbody class="text-gray-600 text-sm font-light">
+                <!-- Table Data will be populated here -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            fetch("/survey/list")
+                .then(response => response.json())
+                .then(data => {
+                    const tableBody = document.querySelector("tbody");
+                    data['surveys'].forEach(survey => {
+                        const row = document.createElement("tr");
+
+                        // Timestamp
+                        const timestampCell = document.createElement("td");
+                        timestampCell.textContent = new Date(survey.timestamp).toLocaleString();
+                        row.appendChild(timestampCell);
+
+                        // Name
+                        const nameCell = document.createElement("td");
+                        nameCell.textContent = survey.name;
+                        row.appendChild(nameCell);
+
+                        // Gender
+                        const genderCell = document.createElement("td");
+                        genderCell.textContent = survey.gender;
+                        row.appendChild(genderCell);
+
+                        // Age
+                        const ageCell = document.createElement("td");
+                        ageCell.textContent = survey.age;
+                        row.appendChild(ageCell);
+
+                        // Education
+                        const educationCell = document.createElement("td");
+                        educationCell.textContent = survey.education;
+                        row.appendChild(educationCell);
+
+                        // Years of Coding
+                        const yearsOfCodingCell = document.createElement("td");
+                        yearsOfCodingCell.textContent = survey.yearsOfCoding;
+                        row.appendChild(yearsOfCodingCell);
+
+                        // Industry
+                        const industryCell = document.createElement("td");
+                        industryCell.textContent = survey.industry;
+                        row.appendChild(industryCell);
+
+                        // Open Source
+                        const openSourceCell = document.createElement("td");
+                        openSourceCell.textContent = survey.openSource ? "Yes" : "No";
+                        row.appendChild(openSourceCell);
+
+                        // Version Control
+                        const versionControlCell = document.createElement("td");
+                        versionControlCell.textContent = survey.versionControl;
+                        row.appendChild(versionControlCell);
+
+                        // Tools
+                        const toolsCell = document.createElement("td");
+                        toolsCell.textContent = survey.tools;
+                        row.appendChild(toolsCell);
+
+                        // Hours of Study
+                        const hoursOfStudyCell = document.createElement("td");
+                        hoursOfStudyCell.textContent = survey.hoursOfStudy;
+                        row.appendChild(hoursOfStudyCell);
+
+                        tableBody.appendChild(row);
+                    });
+                })
+                .catch(error => console.error("Error fetching survey data:", error));
+        });
+    </script>
+</body>
+
+</html>
